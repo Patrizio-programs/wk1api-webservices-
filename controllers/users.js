@@ -3,6 +3,8 @@ const ObjectId = require('mongodb').ObjectId;
 
 const getAll = async (req, res) => {
     try {
+        const db = mongodb.getDb();
+        console.log('Database connection:', db);
         const result = await mongodb.getDb().db().collection('contacts').find();
         result.toArray().then((contacts) => {
             res.setHeader('Content-Type', 'application/json');
