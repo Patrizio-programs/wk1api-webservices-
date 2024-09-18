@@ -1,5 +1,4 @@
 const router = require('express').Router();
-
 const mongodb = require('./data/database');
 
 router.use((req, res, next) => {

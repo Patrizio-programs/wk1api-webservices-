@@ -1,7 +1,7 @@
 const dotenv = require('dotenv');
 dotenv.config();
 const mongodb = require('mongodb').MongoClient;
-const assert = require('assert');
+
 const { MongoClient } = require('mongodb');
 
 let database
