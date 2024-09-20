@@ -11,7 +11,7 @@ router.use((req, res, next) => {
 router.get('/', (req, res) => {res.send('Hello World!')});
 
 //connect users
-router.use('./users', require('./users'));
+router.use('/users', require('./users'));
 //database init
 mongodb.initDb((err) => {
     if (!err) {
