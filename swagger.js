@@ -12,4 +12,9 @@ const doc = {
 const outputFile = './swagger.json';
 const endpointFiles = ['./routes/index.js'];
 
-AutoSwag(endpointFiles, outputFile, doc)
+AutoSwag(endpointFiles, outputFile, doc).then(() => {
+    console.log('Swagger file created');
+}).catch((err) => {
+    console.log('Error creating swagger file');
+    console.log(err);
+});
