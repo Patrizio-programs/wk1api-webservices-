@@ -7,7 +7,7 @@ router.use((req, res, next) => {
     next();
   });
 
-
+router.use('/swagger', require('./swagger'));
 router.get('/', (req, res) => {res.send('Hello World!')});
 
 //connect users
