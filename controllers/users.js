@@ -29,4 +29,53 @@ const getSingle = async (req, res) => {
 };
 
 
-module.exports = { getAll, getSingle }
+const createContact = async (req, res) => {
+    
+    const contact = {
+        firstName: req.body.firstName,
+        lastName: req.body.lastName,
+        email: req.body.email,
+        favoriteColor: req.body.favoriteColor,
+        birthday: req.body.birthday
+    };
+    const contactId = new ObjectId(req.params.id);
+    try {
+        const response = await mongodb.getDatabase().db().collection('contacts').replaceOne({ _id: contactId }, contact);
+        if (response) {
+            res.status(201).json(response);
+        } else {
+            res.status(500).json(response);
+        }
+    } catch (error) {
+        res.status(500).json(error);
+    }
+}
+
+const updateContact = async (req, res) => {
+    const userId = new ObjectId(req.params.id);
+    const contact = {
+        firstName: req.body.firstName,
+        lastName: req.body.lastName,
+        email: req.body.email,
+        favoriteColor: req.body.favoriteColor,
+        birthday: req.body.birthday
+    };
+    try {
+        const response = await mongodb.getDatabase().db().collection('contacts').updateOne({ _id: userId }, { $set: contact });
+        res.status(200).json(response);
+    } catch (error) {
+        res.status(500).json(error);
+    }
+}
+
+const deleteContact = async (req, res) => {
+    const userId = new ObjectId(req.params.id);
+    try {
+        const response = await mongodb.getDatabase().db().collection('contacts').deleteOne({ _id: userId });
+        res.status(200).json(response);
+    } catch (error) {
+        res.status(500).json(error);
+    }
+}
+
+module.exports = { getAll, getSingle, createContact, updateContact, deleteContact }
