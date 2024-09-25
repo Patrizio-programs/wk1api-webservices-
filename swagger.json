@@ -5,10 +5,11 @@
         "title": "wk1 api",
         "description": "wk1 api"
     },
-    "host": "localhost:3000",
+    "host": "https://cse341contacts-k1ig.onrender.com/",
     "basePath": "/",
     "schemes": [
-        "http"
+        "https"
+
     ],
     "consumes": [
         "application/json"
