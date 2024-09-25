@@ -30,7 +30,6 @@ const getSingle = async (req, res) => {
 
 
 const createContact = async (req, res) => {
-    
     const contact = {
         firstName: req.body.firstName,
         lastName: req.body.lastName,
@@ -38,16 +37,11 @@ const createContact = async (req, res) => {
         favoriteColor: req.body.favoriteColor,
         birthday: req.body.birthday
     };
-    const contactId = new ObjectId(req.params.id);
     try {
-        const response = await mongodb.getDatabase().db().collection('contacts').replaceOne({ _id: contactId }, contact);
-        if (response) {
-            res.status(201).json(response);
-        } else {
-            res.status(500).json(response);
-        }
+        const response = await getDatabase().db().collection('contacts').insertOne(contact);
+        res.status(201).json(response.insertedId);
     } catch (error) {
-        res.status(500).json(error);
+        res.status(500).json({ message: 'Error creating contact', error: error.message });
     }
 }
 
