@@ -5,7 +5,7 @@
         "title": "wk1 api",
         "description": "wk1 api"
     },
-    "host": "https://cse341contacts-k1ig.onrender.com/",
+    "host": "cse341contacts-k1ig.onrender.com/",
     "basePath": "/",
     "schemes": [
         "https"
